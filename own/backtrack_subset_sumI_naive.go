@@ -1,5 +1,7 @@
 package own
 
+import "sort"
+
 // 子集和问题
 
 // case1: 无重复元素的情况
@@ -83,6 +85,7 @@ func ssnII(nums []int, target int) [][]int {
 	state := []int{}
 	res := [][]int{}
 	start := 0
+	sort.Ints(nums)
 	ssnIIHelper(start, &state, nums, target, &res)
 	return res
 }
