@@ -47,6 +47,12 @@ func min(args ...int) int {
 	}
 	return v
 }
+func abs(arg int) int {
+	if arg > 0 {
+		return arg
+	}
+	return -arg
+}
 func max(args ...int) int {
 	v := args[0]
 	for _, arg := range args {
