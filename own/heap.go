@@ -1,7 +1,11 @@
 package own
 
+import (
+	"container/heap"
+)
+
 // 大根堆，小根堆的性质 （完全二叉树）
-// 1. 给定节点 i，其 PARENT(i) = (i-1)/2 LEFT(i) = i*2 + 1 RIGHT(i) = i*2+2
+// 1. 给定节点 i（从 0 开始计算），其 PARENT(i) = (i-1)/2 LEFT(i) = i*2 + 1 RIGHT(i) = i*2+2
 // 2. 大根堆，孩子节点小于父节点，根节点最大。 小根堆反之
 // heapify 的目的就是维持堆的性质，使之满足堆的性质
 // 经过梳理，可以理解 heapify 的时间复杂度与 以指定节点为根的子树高度有关
@@ -9,7 +13,7 @@ package own
 // 所以 heapify 的复杂度为 O(log_n)
 
 // buildHeap 自下向上建堆。（将非叶子节点执行 heapify 操作）
-// 堆是完全二叉树，平铺展开在数组 A 中， 那么数组后面 A[n/2:] 将都是叶子节点
+// 堆是完全二叉树，按层平铺展开在数组 A 中， 那么数组后面 A[n/2:] 将都是叶子节点
 // 那么 A[n/2 - 1] 开始向前遍历到 0 （根节点），执行 heapify 操作，将获取一个堆结构的数组
 // 这其实是一种优化后的建堆方法，从倒数第二层的最后一个节点开始
 // 您提到的算法导论中提到的是一种优化的建堆方法，称为“线性建堆”（linear-time heap construction）。
@@ -108,4 +112,47 @@ func (h *MaxHeap) getMax() int {
 		return -1
 	}
 	return h.array[0]
+}
+
+func a() {
+	heap.Init()
+}
+
+type b struct{}
+
+// Len is the number of elements in the collection.
+func (b *b) Len() int {
+	panic("not implemented") // TODO: Implement
+}
+
+// Less reports whether the element with index i
+// must sort before the element with index j.
+//
+// If both Less(i, j) and Less(j, i) are false,
+// then the elements at index i and j are considered equal.
+// Sort may place equal elements in any order in the final result,
+// while Stable preserves the original input order of equal elements.
+//
+// Less must describe a transitive ordering:
+//   - if both Less(i, j) and Less(j, k) are true, then Less(i, k) must be true as well.
+//   - if both Less(i, j) and Less(j, k) are false, then Less(i, k) must be false as well.
+//
+// Note that floating-point comparison (the < operator on float32 or float64 values)
+// is not a transitive ordering when not-a-number (NaN) values are involved.
+// See Float64Slice.Less for a correct implementation for floating-point values.
+func (b *b) Less(i int, j int) bool {
+	panic("not implemented") // TODO: Implement
+}
+
+// Swap swaps the elements with indexes i and j.
+func (b *b) Swap(i int, j int) {
+	panic("not implemented") // TODO: Implement
+}
+
+func (b *b) Push(x any) {
+	panic("not implemented") // TODO: Implement
+}
+
+func (b *b) Pop() any {
+	panic("not implemented") // TODO: Implement
 }
