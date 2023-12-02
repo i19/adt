@@ -1,9 +1,5 @@
 package own
 
-import (
-	"container/heap"
-)
-
 // 大根堆，小根堆的性质 （完全二叉树）
 // 1. 给定节点 i（从 0 开始计算），其 PARENT(i) = (i-1)/2 LEFT(i) = i*2 + 1 RIGHT(i) = i*2+2
 // 2. 大根堆，孩子节点小于父节点，根节点最大。 小根堆反之
@@ -112,10 +108,6 @@ func (h *MaxHeap) getMax() int {
 		return -1
 	}
 	return h.array[0]
-}
-
-func a() {
-	heap.Init()
 }
 
 type b struct{}
