@@ -6,12 +6,29 @@ import (
 )
 
 func Test_rotateMatrix(t *testing.T) {
-	// fmt.Println(rotate(3, 0, 0))
-	// fmt.Println(rotate(3, 0, 2))
-	// fmt.Println(rotate(3, 2, 2))
-	// fmt.Println(rotate(3, 2, 0))
-	// fmt.Println(rotate(3, 0, 1))
+	input := [][][]int{
+		[][]int{
+			{1},
+		},
+		[][]int{
+			{1, 2, 3},
+			{4, 5, 6},
+			{7, 8, 9},
+		},
+		[][]int{
+			{1, 2, 3, 4},
+			{5, 6, 7, 8},
+			{9, 10, 11, 12},
+			{13, 14, 15, 16},
+		},
+	}
 
-	rotate(6)
-	fmt.Println(rotate2(6, 2, 2))
+	for i := range input {
+		rotate(input[i])
+		for _, v := range input[i] {
+			fmt.Println(v)
+		}
+		println("========")
+
+	}
 }
