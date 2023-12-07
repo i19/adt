@@ -10,5 +10,6 @@ func Test_buildTree(t *testing.T) {
 	tree := buildTree(pre, ino)
 	levelOrder(tree)
 	println()
+	frontOrder(tree)
 	afterOrder(tree)
 }

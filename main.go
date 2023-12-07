@@ -1,40 +1,40 @@
 package main
 
-import (
-	"container/heap"
-	"fmt"
-)
-
-var (
-	nums = []int{1, 3, -1, -3, 5, 3, 6, 7}
-)
-
-type myHeap []int
-
-func (m myHeap) Len() int {
-	return len(m)
+type TreeNode struct {
+	Val   int
+	Left  *TreeNode
+	Right *TreeNode
 }
 
-func (m myHeap) Less(i int, j int) bool {
-	return nums[m[i]] > nums[m[j]]
+func findPathToNode(node, target *TreeNode, res *[]*TreeNode, path []*TreeNode) bool {
+	if node == nil {
+		return false
+	}
+	path = append(path[:0:0], path...) // 复制 path 的内容
+	path = append(path, node)
+	if node == target {
+		*res = append(*res, path...)
+		return true
+	}
+	if findPathToNode(node.Left, target, res, path) || findPathToNode(node.Right, target, res, path) {
+		return true
+	}
+	return false
 }
 
-func (m myHeap) Swap(i int, j int) {
-	m[i], m[j] = m[j], m[i]
-}
-
-func (m *myHeap) Push(x any) {
-	*m = append(*m, x.(int))
-}
-
-func (m myHeap) Pop() any {
-	panic("not implemented") // TODO: Implement
+func findPath(root, target *TreeNode) []*TreeNode {
+	var res []*TreeNode
+	findPathToNode(root, target, &res, []*TreeNode{})
+	return res
 }
 
 func main() {
-	var x myHeap
-	for i := 0; i < len(nums); i++ {
-		heap.Push(&x, i)
-	}
-	fmt.Println(x[0])
+	n1 := &TreeNode{Val: 3}
+	n2 := &TreeNode{Val: 5}
+	n3 := &TreeNode{Val: 1}
+	n1.Left = n2
+	n2.Right = n3
+
+	paths := findPath(n1, n3)
+	println(len(paths))
 }
