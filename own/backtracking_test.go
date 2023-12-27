@@ -70,13 +70,13 @@ func Test_backtrace(t *testing.T) {
 
 func Test_permutationsI(t *testing.T) {
 	// 无重复元素
-	// nums := []int{1, 2, 5}
+	nums := []int{1, 2, 5}
 	// res := permutationsI(nums)
 	// fmt.Println(res)
 
-	// res = permutationsII(nums)
-	// fmt.Println(res)
+	res := permutationsII(nums)
+	fmt.Println(res)
 	// 有重复元素
-	nums := []int{1, 1, 1, 5, 5}
-	fmt.Println(permutationsIII(nums))
+	// nums := []int{1, 1, 1, 5, 5}
+	// fmt.Println(permutationsIII(nums))
 }

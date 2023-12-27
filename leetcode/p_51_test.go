@@ -6,8 +6,8 @@ import (
 )
 
 func Test_solveNQueens(t *testing.T) {
-	n := 20
+	n := 4
 	// results := solveNQueensII(n)
-	results := solveNQueensII(n)
+	results := solveNQueensIII(n)
 	fmt.Println(len(results))
 }

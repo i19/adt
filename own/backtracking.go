@@ -114,12 +114,11 @@ func permutationsIHelper(state *[]int, choices *[]int, selected *[]bool, res *[]
 	}
 
 	for i := 0; i < len(*choices); i++ {
-		choice := (*choices)[i]
 		// 剪枝（不可使用已使用过的元素）
 		if !(*selected)[i] {
 			// 做选择，状态更新
 			(*selected)[i] = true
-			*state = append(*state, choice)
+			*state = append(*state, (*choices)[i])
 			permutationsIHelper(state, choices, selected, res)
 			// 状态回溯
 			(*selected)[i] = false

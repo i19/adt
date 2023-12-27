@@ -1,5 +1,9 @@
 package leetcode
 
+import (
+	"strings"
+)
+
 // 51. N 皇后
 // https://leetcode.cn/problems/n-queens/
 func solveNQueensHelperFill(size, pos int) string {
@@ -86,4 +90,35 @@ func solveNQueensIIHelper(state *[]int, res *[][]string, n, startRow int,
 			}
 		}
 	}
+}
+
+func solveNQueensIII(n int) (res [][]string) {
+	posOfCol := make([]int, n)
+
+	sumFilter := make([]bool, 2*n+1)
+	minFilter := make([]bool, 2*n+1)
+	colFilter := make([]bool, n)
+
+	var dfs func(row int)
+	dfs = func(row int) {
+		if row == n {
+			tres := make([]string, n)
+			for c, r := range posOfCol {
+
+				tres[c] = strings.Repeat(".", r) + "Q" + strings.Repeat(".", n-1-r)
+			}
+			res = append(res, tres)
+		}
+		for col, filtered := range colFilter {
+			minusK := col - row + n
+			if !filtered && !sumFilter[col+row] && !minFilter[minusK] {
+				posOfCol[col] = row
+				colFilter[col], sumFilter[col+row], minFilter[minusK] = true, true, true
+				dfs(row + 1)
+				colFilter[col], sumFilter[col+row], minFilter[minusK] = false, false, false
+			}
+		}
+	}
+	dfs(0)
+	return
 }

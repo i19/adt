@@ -25,3 +25,25 @@ func permute(nums []int) [][]int {
 	permuteHelper(&state, &res, selected, nums)
 	return res
 }
+
+func permuteII(nums []int) (res [][]int) {
+	path := make([]int, len(nums))
+	selected := make([]bool, len(nums))
+	var dfs func(pos int)
+	dfs = func(pos int) {
+		if pos == len(nums) {
+			res = append(res, append([]int{}, path...))
+			return
+		}
+		for i, v := range nums {
+			if !selected[i] {
+				selected[i] = true
+				path[pos] = v
+				dfs(pos + 1)
+				selected[i] = false
+			}
+		}
+	}
+	dfs(0)
+	return
+}

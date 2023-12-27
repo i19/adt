@@ -1,5 +1,7 @@
 package main
 
+import "strconv"
+
 type TreeNode struct {
 	Val   int
 	Left  *TreeNode
@@ -29,12 +31,18 @@ func findPath(root, target *TreeNode) []*TreeNode {
 }
 
 func main() {
-	n1 := &TreeNode{Val: 3}
-	n2 := &TreeNode{Val: 5}
-	n3 := &TreeNode{Val: 1}
-	n1.Left = n2
-	n2.Right = n3
+	// n1 := &TreeNode{Val: 3}
+	// n2 := &TreeNode{Val: 5}
+	// n3 := &TreeNode{Val: 1}
+	// n1.Left = n2
+	// n2.Right = n3
 
-	paths := findPath(n1, n3)
-	println(len(paths))
+	// paths := findPath(n1, n3)
+	// println(len(paths))
+	s := "011"
+	v, e := strconv.Atoi(s)
+	if e != nil {
+		panic(e)
+	}
+	println(v)
 }

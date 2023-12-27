@@ -24,6 +24,8 @@ import "sort"
 //(4)4
 
 // 因此需要配合排序使用
+// 90. 子集 II
+// https://leetcode.cn/problems/subsets-ii
 func subsetsWithDup(nums []int) [][]int {
 	sort.Ints(nums)
 	res := [][]int{}

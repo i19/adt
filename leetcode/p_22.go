@@ -23,3 +23,59 @@ func generateParenthesis(n int) []string {
 	generateParenthesisHelper("", n, &res, n, n)
 	return res
 }
+
+func generateParenthesisII(n int) (res []string) {
+	tres := make([]rune, n*2)
+	tres[0] = '('
+	lc, rc := 1, 0
+	var dfs func(pos int)
+	dfs = func(pos int) {
+		if lc > n || rc > n {
+			return
+		}
+
+		if pos == len(tres) {
+			res = append(res, string(tres))
+			return
+		}
+		if lc > rc {
+			tres[pos] = '('
+			lc++
+			dfs(pos + 1)
+			lc--
+			tres[pos] = ')'
+			rc++
+			dfs(pos + 1)
+			rc--
+		}
+		if lc == rc {
+			tres[pos] = '('
+			lc++
+			dfs(pos + 1)
+			lc--
+		}
+	}
+	dfs(1)
+	return
+}
+
+func generateParenthesisIII(n int) (res []string) {
+	tres := make([]rune, n*2)
+	var dfs func(pos, l, r int)
+	dfs = func(pos, l, r int) {
+		if pos == len(tres) {
+			res = append(res, string(tres))
+			return
+		}
+		if l < n {
+			tres[pos] = '('
+			dfs(pos+1, l+1, r)
+		}
+		if r < l {
+			tres[pos] = ')'
+			dfs(pos+1, l, r+1)
+		}
+	}
+	dfs(0, 0, 0)
+	return
+}
