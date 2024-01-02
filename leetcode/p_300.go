@@ -4,6 +4,7 @@ package leetcode
 // https://leetcode.cn/problems/longest-increasing-subsequence
 // 尝试使用单调栈
 // （单调栈不行，会找第一个，但是 子序列是可以 跳着组成）
+
 func lengthOfLISI(nums []int) int {
 	prev := make([]int, len(nums))
 	stack := []int{}
@@ -20,28 +21,24 @@ func lengthOfLISI(nums []int) int {
 		for next := start; prev[next] != 0 && prev[next] < len(nums); next = prev[next] {
 			tres++
 		}
-		println(tres)
 		res = max(res, tres)
 	}
 	return res
 }
 
-// 使用动态规划（但是还是要遍历 dp 表，感觉并不太好）
+// 使用动态规划
 func lengthOfLIS(nums []int) int {
 	dp := make([]int, len(nums))
-
+	ans := 1
 	for i := 0; i < len(nums); i++ {
 		dp[i] = 1
-		for j := 0; j < i; j++ {
-			if nums[j] <= nums[i] {
+		for j := i; j >= 0; j-- {
+			if nums[j] < nums[i] {
 				dp[i] = max(dp[i], dp[j]+1)
+				ans = max(ans, dp[i])
 			}
 		}
-	}
 
-	res := 0
-	for _, v := range dp {
-		res = max(res, v)
 	}
-	return res
+	return ans
 }

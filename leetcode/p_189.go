@@ -27,5 +27,6 @@ func reverse(a []int) {
 		a[i], a[j] = a[j], a[i]
 		i++
 		j--
+
 	}
 }

@@ -1,6 +1,9 @@
 package main
 
-import "strconv"
+import (
+	"fmt"
+	"sort"
+)
 
 type TreeNode struct {
 	Val   int
@@ -39,10 +42,13 @@ func main() {
 
 	// paths := findPath(n1, n3)
 	// println(len(paths))
-	s := "011"
-	v, e := strconv.Atoi(s)
-	if e != nil {
-		panic(e)
-	}
-	println(v)
+	a := []int{1, 6, 1, 8, 2, 1, 7}
+	sort.Slice(a, func(i, j int) bool {
+		if a[i] > a[j] {
+			return true
+		}
+		return false
+	})
+
+	fmt.Println(a)
 }
